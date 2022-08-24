@@ -3,7 +3,6 @@ console.log("Hello World");
 game();
 
 function getComputerChoice() {
-    //generate random number between 0 and 100
     let randomNumber = (Math.random() * 100);
 
     //use random number to get a computer choice
@@ -19,7 +18,7 @@ function getComputerChoice() {
 }
 
 function playRound (playerSelection, computerSelection) {
-    //check for possible scenarios and return outcomes
+    //check for possible game scenarios and return outcomes
     if (playerSelection == computerSelection) {
         console.log("THAT ROUND IS A DRAW.");
         return "draw";
@@ -46,9 +45,8 @@ function game() {
 
     //play 5 rounds
     for (let i = 0; i < 5; i++) {
-        //get the outcome of the game, which could be player win, invalid, computer win, or draw
         let outcome = playRound(getPlayerChoice(), getComputerChoice());
-        //give a point to the winner
+
         if (outcome == "computerWin") {
             computerScore++;
         }
@@ -61,11 +59,9 @@ function game() {
         console.log ("COMPUTER: " + computerScore);
     }
 
-    //announce final outcome
     announceGameOutcome(playerScore, computerScore);
 }
 
-//gets the player's choice
 function getPlayerChoice() {
     let i = 0;
     //tries infinitely until the player enters a valid value
@@ -81,7 +77,6 @@ function getPlayerChoice() {
             console.log("Try picking again")
         }
     }
-
 }
 
 //runs when the game is over
