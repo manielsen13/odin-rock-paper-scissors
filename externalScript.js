@@ -19,12 +19,6 @@ function getComputerChoice() {
 }
 
 function playRound (playerSelection, computerSelection) {
-    //check for invalid player inputs
-    if (!validSelection(playerSelection)) {
-        console.log("YOU HAD A SPELLING ERROR IN YOUR CHOICE AND WASTED A ROUND. TRY AGAIN.")
-        return "invalidInput"
-    }
-
     //check for possible scenarios and return outcomes
     if (playerSelection == computerSelection) {
         console.log("THAT ROUND IS A DRAW.");
@@ -52,10 +46,8 @@ function game() {
 
     //play 5 rounds
     for (let i = 0; i < 5; i++) {
-        //get player's choice
-        let playerChoice = prompt("What's your choice: Rock, Paper, or Scissors?").toLowerCase()
         //get the outcome of the game, which could be player win, invalid, computer win, or draw
-        let outcome = playRound(playerChoice, getComputerChoice());
+        let outcome = playRound(getPlayerChoice(), getComputerChoice());
         //give a point to the winner
         if (outcome == "computerWin") {
             computerScore++;
@@ -73,15 +65,26 @@ function game() {
     announceGameOutcome(playerScore, computerScore);
 }
 
-//use prompt() to get values for the person
+//gets the player's choice
+function getPlayerChoice() {
+    let i = 0;
+    //tries infinitely until the player enters a valid value
+    while (i < 1) {
+        let choice = prompt("What's your choice: Rock, Paper, or Scissors?");
+        if (choice == null) {
+            continue;
+        }
+        if (validSelection(choice.toString().toLowerCase())) {
+            return choice.toString().toLowerCase()
+        }
+        else {
+            console.log("Try picking again")
+        }
+    }
 
+}
 
-
-
-
-
-
-
+//runs when the game is over
 function announceGameOutcome (playerFinal, computerFinal) {
     console.log("THE GAME IS OVER! THE FINAL SCORE IS");
     console.log("PLAYER: " + playerFinal);
@@ -97,7 +100,6 @@ function announceGameOutcome (playerFinal, computerFinal) {
         console.log("IT'S A TIE.")
     }
 }
-
 
 //checks to see if the player entered the correct value
 function validSelection (selection) {
