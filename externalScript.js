@@ -1,9 +1,26 @@
 console.log("Hello World");
 
+
+//core components for scoreboard functionality
+let playerScore = 0;
+let computerScore = 0;
+
+const computerScoreValueDisplay = document.querySelector(".computerScoreValue");
+const playerScoreValueDisplay = document.querySelector(".playerScoreValue");
+
+
+
+//core components for announcer functionality
+const gameStartText = "Welcome to Rock, Paper, Scissors! You're playing against the computer. First to 5 wins!";
+const gameEndText = "That's the game! Press any of the three buttons to reset and play again";
+
+const announcerText = document.querySelector(".announcerText");
+
+//button functionality
 const choiceBtns = document.querySelectorAll(".choiceBtn");
-console.log(choiceBtns);
+
+//round is played when buttons are pressed
 for (const choiceBtn of choiceBtns) {
-    choiceBtn.style.color = "red";
     choiceBtn.addEventListener("click", (e) => {
         console.log(e.target.id);
         console.log(playRound(e.target.id, getComputerChoice()))
@@ -26,20 +43,21 @@ function getComputerChoice() {
 }
 
 function playRound (playerSelection, computerSelection) {
-    //check for possible game scenarios and return outcomes
+    //check for possible game scenarios and determine round outcomes. Update scoreboard.
     if (playerSelection == computerSelection) {
-        console.log("THAT ROUND IS A DRAW.");
-        return "draw";
+        announcerText.textContent = "That round is a draw!";
     }
     if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "rock") {
-        console.log("YOU WIN THAT ROUND!");
-        console.log(playerSelection.toUpperCase() + " BEATS " + computerSelection.toUpperCase());
-        return "playerWin";
+        announcerText.textContent = "You win that round!";
+        playerScore++;
+        console.log(playerScore)
+        playerScoreValueDisplay.textContent = playerScore.toString();
     }
     else {
-        console.log("YOU LOSE THAT ROUND.");
-        console.log(computerSelection.toUpperCase() + " BEATS " + playerSelection.toUpperCase());
-        return "computerWin";
+        announcerText.textContent = ("You lose that round.");
+        computerScore++;
+        console.log(computerScore)
+        computerScoreValueDisplay.textContent = computerScore.toString();
     }
 }
 
