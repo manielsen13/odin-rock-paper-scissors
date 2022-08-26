@@ -1,0 +1,33 @@
+.choiceBtnList {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.announcerText {
+    text-align: center;
+    padding: 50px;
+}
+
+.scores {
+    display: flex;
+    gap: 30px;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.resetButtonContainer {
+    display: flex;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+}

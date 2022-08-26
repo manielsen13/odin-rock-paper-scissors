@@ -25,6 +25,7 @@ for (const choiceBtn of choiceBtns) {
 }
 
 //reset button + functionality
+const resetButtonContainer = document.querySelector(".resetButtonContainer");
 const resetButton = document.createElement("button");
 
 resetButton.textContent = "Reset"
@@ -69,7 +70,7 @@ function playRound (playerSelection, computerSelection) {
 function checkForWin () {
     if (playerScore > 4 || computerScore > 4) {
         announcerText.textContent = gameEndText;
-        document.body.appendChild(resetButton);
+        resetButtonContainer.appendChild(resetButton);
     }
 }
 
