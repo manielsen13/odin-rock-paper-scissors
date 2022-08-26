@@ -1,6 +1,14 @@
 console.log("Hello World");
 
-game();
+const choiceBtns = document.querySelectorAll(".choiceBtn");
+console.log(choiceBtns);
+for (const choiceBtn of choiceBtns) {
+    choiceBtn.style.color = "red";
+    choiceBtn.addEventListener("click", (e) => {
+        console.log(e.target.id);
+        console.log(playRound(e.target.id, getComputerChoice()))
+    });
+}
 
 function getComputerChoice() {
     let randomNumber = (Math.random() * 100);

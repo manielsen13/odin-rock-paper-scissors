@@ -6,9 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
     <link rel="stylesheet" href="style.css">
-    <script src="externalScript.js"></script>
+    <script src="externalScript.js" defer></script>
   </head>
   <body>
+    <div class="announcerText">Welcome to Rock, Paper, Scissors! You're playing against the computer. First to 5 wins!</div>
+    <div class="choiceBtnList">
+      <button class="choiceBtn" id = "rock">Rock</button>
+      <button class="choiceBtn" id = "paper">Paper</button>
+      <button class="choiceBtn" id = "scissors">Scissors</button>
+    </div>
+    <div class="scoreList">
+      <div class="score" id = "computerScore"></div>
+      <div class="score" id = "humanScore"></div>
+
+
+    </div>
 	
   </body>
 </html>
